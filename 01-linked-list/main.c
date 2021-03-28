@@ -43,19 +43,23 @@ static void add_node (int data) {
 }
 
 
+// prpends a node to head
 static void prepend (int data) {
-	
-	node *temp = (node *) malloc(SIZE);
-	temp->data = data;
-	head = temp;
 
-	if (head == NULL) {
-		head->next = NULL;
-	}
-	else {
-		temp->next = head;
+	if (head == NULL) {				// if head is null,
+		head = (node *) malloc(SIZE);		// allocate size for head
+		head->next = NULL;			// make head -> next = null
+		head->data = data;			// make head -> data = data	
+	}					
+
+	else {						// else head is not null
+		node *temp = (node *) malloc(SIZE);	// make a temp node
+		temp->data = data;			// assign it data
+		temp->next = head;			// make it point to head (prepend step 1)
+		head = temp;				// make temp the new head (prepend step 2)
 	}
 }
+
 
 static void remove_node (node *ptr) {
 
@@ -65,12 +69,17 @@ static void remove_node (node *ptr) {
 int main(){
 	
 
-//	node *n1 = append(head, 0);			// first node (curr node = HEAD (no nodes yet))
-//	node *n2 = append(n1,   1);			// second node (append to n1)
-	
-	prepend(-1);
-
+	node *n1 = append(head, 1);			// first node (curr node = HEAD (no nodes yet))
+	node *n2 = append(n1,   2);			// second node (append to n1)
+	printf("Append test: ");			// formatting (see output)
 	print_list(head);
+	
+	prepend(-1);					// prepend tests
+	prepend(-2);
+	prepend(-3);					// head should be node with -3 data at this point
+	printf("Prepend test: ");			// formatting (see output)
+	print_list(head);
+
 
 	
 	return 0;
