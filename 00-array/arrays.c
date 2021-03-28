@@ -45,7 +45,7 @@ int main(){
 	printintarr(intarr1, intarr1size);
 
 	//ROTATE RIGHT
-	int arr1[] = {1, 2, 3, 4}; int arr1size = sizeof(arr1)/sizeof(int); int rotat_times = 1;
+	int arr1[] = {1, 2, 3, 4}; int arr1size = sizeof(arr1)/sizeof(int); int rotat_times = 2;
 	int *rotated_r = rotate_right(arr1, arr1size, rotat_times);
 	printf("Roatated right %d times ", rotat_times);
 	printintarr(rotated_r, arr1size);
