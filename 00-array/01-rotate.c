@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "arrays.h"
 
-/* copy of array and follow where curr ends up */
+/* time: O(n), space: O(n) */
 int *rotate_right (int *arr, int size, int times) {
 	times = times % size;
 	if (times == 0) return arr;
@@ -13,6 +13,7 @@ int *rotate_right (int *arr, int size, int times) {
 	return temparr;
 }
 
+/* time: O(n), space: O(n) */
 int *rotate_left (int *arr, int size, int times) {
 	times = times % size;
 	if (times == 0) return arr;
@@ -24,5 +25,6 @@ int *rotate_left (int *arr, int size, int times) {
 	return temparr;
 }
 
-/* save space while rotating */
+/* time: O(n), space: O(1) */
+
 
