@@ -2,7 +2,11 @@
 #include <stdlib.h>
 #include "arrays.h"
 
+<<<<<<< HEAD
 /* time: O(n), space: O(n) */
+=======
+/* copy of array and follow where curr ends up */
+>>>>>>> 575c6f6... solved arr rotation. wastes space. write efficient tmrw
 int *rotate_right (int *arr, int size, int times) {
 	times = times % size;
 	if (times == 0) return arr;
@@ -13,7 +17,10 @@ int *rotate_right (int *arr, int size, int times) {
 	return temparr;
 }
 
+<<<<<<< HEAD
 /* time: O(n), space: O(n) */
+=======
+>>>>>>> 575c6f6... solved arr rotation. wastes space. write efficient tmrw
 int *rotate_left (int *arr, int size, int times) {
 	times = times % size;
 	if (times == 0) return arr;
@@ -25,6 +32,10 @@ int *rotate_left (int *arr, int size, int times) {
 	return temparr;
 }
 
+<<<<<<< HEAD
 /* time: O(n), space: O(1) */
 
+=======
+/* save space while rotating */
+>>>>>>> 575c6f6... solved arr rotation. wastes space. write efficient tmrw
 
