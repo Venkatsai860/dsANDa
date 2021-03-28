@@ -1,8 +1,10 @@
 #ifndef LINKEDLIST
 #define LINKEDLIST
+typedef struct linkedlist node;
 
-typedef struct linkedlist {
-
-} sll;						// single linked list
+struct linkedlist {
+	int data;
+	node  *next;
+};						// single linked list
 
 #endif /* LINKEDLIST */
