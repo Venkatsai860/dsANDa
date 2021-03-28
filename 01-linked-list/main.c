@@ -39,7 +39,24 @@ static node *append (node *curr, int data) {
 }
 
 
-static void add_node (int data) {
+// adds node after a value (data) is encountered
+static void add_node (int find_val, int add_val) {
+	
+	node *temp1 = head;
+
+	while (temp1 != NULL) {
+		if (temp1->data == find_val) {
+			node *temp2 = (node *) malloc(SIZE);
+			temp2->next = temp1->next;
+			temp2->data = add_val;
+			temp1->next = temp2;
+			return;
+		}
+		temp1 = temp1->next;
+	}
+
+	printf ("%d not in the list.\n");
+
 }
 
 
@@ -78,6 +95,10 @@ int main(){
 	prepend(-2);
 	prepend(-3);					// head should be node with -3 data at this point
 	printf("Prepend test: ");			// formatting (see output)
+	print_list(head);
+
+	add_node(-1, 0);
+	printf("Insert test: ");			// formatting (see output)
 	print_list(head);
 
 
