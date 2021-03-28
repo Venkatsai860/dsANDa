@@ -83,7 +83,31 @@ static void prepend (int data) {
 }
 
 
-static void remove_node (node *ptr) {
+static void remove_node (int data) {
+	
+	node *temp1 = head;
+	
+	if (temp1 == NULL) {
+		printf("List empty.\n");
+		return;
+	}
+
+	if (temp1->next == NULL) {
+		head = NULL;
+		return;
+	}
+
+	while (temp1->next != NULL) {
+		if (temp1->next->data == data) {
+			temp1->next = temp1->next->next;
+			return;
+		}	
+		temp1 = temp1->next;
+	}
+
+	printf("Value %d not in the list\n", data);
+
+
 
 }
 
@@ -93,6 +117,7 @@ int main(){
 
 	node *n1 = append(head, 1);			// first node (curr node = HEAD (no nodes yet))
 	node *n2 = append(n1,   2);			// second node (append to n1)
+	node *n3 = append(n2,   3);
 	printf("Append test\t:\t");			// formatting (see output)
 	print_list(head);
 	
@@ -106,6 +131,9 @@ int main(){
 	printf("Insert test\t:\t");			// formatting (see output)
 	print_list(head);				// there should be 0 between -1 and 1
 
+	remove_node(3);					// insert node with data 0 after node with -1 found
+	printf("Remove test\t:\t");			// formatting (see output)
+	print_list(head);				// there should be 0 between -1 and 1
 
 	
 	return 0;
