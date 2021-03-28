@@ -83,37 +83,36 @@ static void prepend (int data) {
 }
 
 
+// removes node with data = data
 static void remove_node (int data) {
 	
 	node *temp1 = head;
 	
-	if (temp1 == NULL) {
+	if (temp1 == NULL) {				// head is null then list empty
 		printf("List empty.\n");
 		return;
 	}
 
-	if (temp1->next == NULL) {
-		head = NULL;
+	if (temp1->next == NULL) {			// if node after head == NULL
+		head = NULL;				// remove head
 		return;
 	}
 
-	while (temp1->next != NULL) {
-		if (temp1->next->data == data) {
-			temp1->next = temp1->next->next;
+	while (temp1->next != NULL) {			// else continue till next node is not null
+		if (temp1->next->data == data) {	// if next node has the value we want to delete
+			temp1->next = temp1->next->next;// then make current's next = next's next (delete)
+			// unallocate mem
 			return;
 		}	
-		temp1 = temp1->next;
+		temp1 = temp1->next;			// continue looping
 	}
 
-	printf("Value %d not in the list\n", data);
-
-
+	printf("Value %d not in the list\n", data);	// at this point no value found
 
 }
 
 
 int main(){
-	
 
 	node *n1 = append(head, 1);			// first node (curr node = HEAD (no nodes yet))
 	node *n2 = append(n1,   2);			// second node (append to n1)
@@ -131,10 +130,11 @@ int main(){
 	printf("Insert test\t:\t");			// formatting (see output)
 	print_list(head);				// there should be 0 between -1 and 1
 
-	remove_node(3);					// insert node with data 0 after node with -1 found
+	remove_node(3);					// remove node with data 3
 	printf("Remove test\t:\t");			// formatting (see output)
-	print_list(head);				// there should be 0 between -1 and 1
+	print_list(head);				// 3 should be gone from the end
 
+	// unallocate mem	
 	
 	return 0;
 }
