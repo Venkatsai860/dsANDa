@@ -39,23 +39,28 @@ static node *append (node *curr, int data) {
 }
 
 
-// adds node after a value (data) is encountered
-static void add_node (int find_val, int add_val) {
+// adds node with data (add_val) after a value (find_val) is encountered
+static void insert_node (int find_val, int add_val) {
 	
-	node *temp1 = head;
+	node *temp1 = head;					
 
-	while (temp1 != NULL) {
-		if (temp1->data == find_val) {
-			node *temp2 = (node *) malloc(SIZE);
-			temp2->next = temp1->next;
-			temp2->data = add_val;
-			temp1->next = temp2;
-			return;
-		}
-		temp1 = temp1->next;
+	if (temp1 == NULL) {				// if no nodes yet, 
+		head = append (head, add_val);		// make one
+		return;
 	}
 
-	printf ("%d not in the list.\n");
+	while (temp1 != NULL) {					// else traverse the list
+		if (temp1->data == find_val) {			// if data found
+			node *temp2 = (node *) malloc(SIZE);	// make a new node
+			temp2->next = temp1->next;		// new node's next = prev's next
+			temp2->data = add_val;			// assign data
+			temp1->next = temp2;			// prev's node = newly made node
+			return;
+		}
+		temp1 = temp1->next;				// continue traversing
+	}
+
+	printf ("%d not in the list.\n");			// at this point no value found
 
 }
 
@@ -88,18 +93,18 @@ int main(){
 
 	node *n1 = append(head, 1);			// first node (curr node = HEAD (no nodes yet))
 	node *n2 = append(n1,   2);			// second node (append to n1)
-	printf("Append test: ");			// formatting (see output)
+	printf("Append test\t:\t");			// formatting (see output)
 	print_list(head);
 	
 	prepend(-1);					// prepend tests
 	prepend(-2);
 	prepend(-3);					// head should be node with -3 data at this point
-	printf("Prepend test: ");			// formatting (see output)
+	printf("Prepend test\t:\t");			// formatting (see output)
 	print_list(head);
 
-	add_node(-1, 0);
-	printf("Insert test: ");			// formatting (see output)
-	print_list(head);
+	insert_node(-1, 0);				// insert node with data 0 after node with -1 found
+	printf("Insert test\t:\t");			// formatting (see output)
+	print_list(head);				// there should be 0 between -1 and 1
 
 
 	
