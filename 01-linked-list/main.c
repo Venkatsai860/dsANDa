@@ -43,8 +43,18 @@ static void add_node (int data) {
 }
 
 
-static void prepend (node *ptr) {
+static void prepend (int data) {
+	
+	node *temp = (node *) malloc(SIZE);
+	temp->data = data;
+	head = temp;
 
+	if (head == NULL) {
+		head->next = NULL;
+	}
+	else {
+		temp->next = head;
+	}
 }
 
 static void remove_node (node *ptr) {
@@ -55,9 +65,10 @@ static void remove_node (node *ptr) {
 int main(){
 	
 
-	node *n1 = append(head, 0);			// first node (curr node = HEAD (no nodes yet))
-	node *n2 = append(n1,   1);			// second node (append to n1)
-
+//	node *n1 = append(head, 0);			// first node (curr node = HEAD (no nodes yet))
+//	node *n2 = append(n1,   1);			// second node (append to n1)
+	
+	prepend(-1);
 
 	print_list(head);
 
