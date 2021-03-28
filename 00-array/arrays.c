@@ -1,5 +1,6 @@
 #include <stdio.h>
-
+#include <stdlib.h>
+#include "arrays.h"
 
 void printintarr(int *arr, int size) {
 	printf("intarr: ");
@@ -42,4 +43,11 @@ int main(){
 	//REVERSE
 	reverse_arr(intarr1, intarr1size);
 	printintarr(intarr1, intarr1size);
+
+	//ROTATE RIGHT
+	int rotat_times = 3;
+	int *rotated_r = rotate_right(intarr1, intarr1size, rotat_times);
+	printf("Roatated right %d times ", rotat_times);
+	printintarr(rotated_r, intarr1size);
+	free(rotated_r);
 }

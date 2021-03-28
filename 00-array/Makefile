@@ -1,9 +1,9 @@
 exec:
-	gcc arrays.c -o ./exec.out
+	gcc *.c -o ./exec.out
 	./exec.out
 
 debug:
-	gcc -g arrays.c -o debug.out
+	gcc -g *.c -o debug.out
 	gdb ./debug.out
 
 clean:
