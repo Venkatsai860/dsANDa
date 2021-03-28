@@ -1,23 +1,47 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "linkedlist.h"
 
-static node *head;
-static node *curr;
-static node *tail = NULL;
+#define SIZE sizeof(node)
 
-static void print_list (node *head) {
-	node *temp = head;
-	while (temp != NULL) {
-		printf("%d -> ", temp->data);
-		temp = temp->next;
+static node *head;	
+
+// print list from a certain node
+static void print_list (node *from) {
+	
+	node *temp = from;				// make new node temp = from (to not change original)
+	
+	while (temp != NULL) {				// while it is not NULL
+		printf("%d -> ", temp->data);		// print its data
+		temp = temp->next;			// and move to next node
 	}
+
 	printf("NULL\n");
 }
 
-static void append (int data) {
+
+// append a node at the end (and update curr node)
+static node *append (node *curr, int data) {
+	
+	node *temp = (node *) malloc(SIZE);		// allocate memory for new node
+	temp->data = data;				// set its data to data
+	temp->next = NULL;				// next = NULL (since appended at the end)
+	
+	if (curr == NULL) {				// if curr is NULL (no nodes yet),
+		curr = temp;				// assign curr to newly made node
+		head = curr;				// update head (since this is first node)
+		return curr;				// return pointer to current node
+	}
+
+	curr->next = temp;				// else make curr's next to temp (appended node)
+
+	return temp;					// return node *temp
 }
+
+
 static void add_node (int data) {
 }
+
 
 static void prepend (node *ptr) {
 
@@ -30,17 +54,10 @@ static void remove_node (node *ptr) {
 
 int main(){
 	
-	node n0, n1, n2;
-	
-	n0.data = 0;
-	n1.data = 1;
-	n2.data = 2;	
 
-	head = &n0;
-	n0.next = &n1;
-	n1.next = &n2;
-	n2.next = NULL;
-	tail = &n2;
+	node *n1 = append(head, 0);			// first node (curr node = HEAD (no nodes yet))
+	node *n2 = append(n1,   1);			// second node (append to n1)
+
 
 	print_list(head);
 
