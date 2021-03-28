@@ -44,10 +44,19 @@ int main(){
 	reverse_arr(intarr1, intarr1size);
 	printintarr(intarr1, intarr1size);
 
-	//ROTATE RIGHT
-	int arr1[] = {1, 2, 3, 4}; int arr1size = sizeof(arr1)/sizeof(int); int rotat_times = 2;
+	
+	//ROTATE RIGHT (COPY OF ARR SPACE WASTE)
+	int arr1[] = {1, 2, 3, 4}; int arr1size = sizeof(arr1)/sizeof(int); int rotat_times = 1;
+	printf("\n\t\t       ");
+        printintarr(arr1, arr1size); 	
 	int *rotated_r = rotate_right(arr1, arr1size, rotat_times);
 	printf("Roatated right %d times ", rotat_times);
 	printintarr(rotated_r, arr1size);
-	free(rotated_r);
+	if (rotat_times % arr1size != 0) free(rotated_r);
+
+	//ROTATE LEFT (COPY OF ARR SPACE WASTE)
+	int *rotated_l = rotate_left(arr1, arr1size, rotat_times);
+	printf("Roatated left %d times  ", rotat_times);
+	printintarr(rotated_l, arr1size);
+	if (rotat_times % arr1size != 0) free(rotated_l);
 }
